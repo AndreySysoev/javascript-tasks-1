@@ -71,47 +71,44 @@ var dashImage = [
 ];
 				 
 function romanToImage(str){
-	var res = ['','','','','','','','',];
+	var result = ['','','','','','','','',];
 	for (var i=0;i<str.length;i++){
 		for (var j=0;j<8;j++){
 			switch (str[i]){
 				case 'I':
-					res[j] += iImage[j];
+					result[j] += iImage[j];
 				break;
 				case 'V':
-					res[j] += vImage[j];
+					result[j] += vImage[j];
 				break;
 				case 'X':
-					res[j] += xImage[j];
+					result[j] += xImage[j];
 				break;
 				case 'L':
-					res[j] += lImage[j];
+					result[j] += lImage[j];
 				break;
 				case ':':
-					res[j] += colonImage[j];
+					result[j] += colonImage[j];
 				break;
 				case '-':
-					res[j] += dashImage[j];
+					result[j] += dashImage[j];
 				break;
 			}
 		}
 	}
-	return res;
+	return result;
 }
 
 function arabToRoman(number){
-	if(!number){
-		return '';
-	}
-	var ret = '';
+	var result = '';
 	var i = arab.length - 1;
-	if (number == 0){
+	if (number === 0){
 		return '-';
 	} 
 	else{
 		while(number > 0){
 			if(number >= arab[i]){
-				ret += roman[i];
+				result += roman[i];
 				number -= arab[i];
 			} 
 			else{
@@ -119,12 +116,11 @@ function arabToRoman(number){
 			}
 		}
 	}
-	return ret;
+	return result;
 }
 
 if (hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60){
-	
-	imageRes = romanToImage(arabToRoman(hours) + ':' + arabToRoman(minutes));
+	var imageRes = romanToImage(arabToRoman(hours) + ':' + arabToRoman(minutes));
 	
 	for (var i=0;i<imageRes.length;i++){
 		console.log(imageRes[i]);
